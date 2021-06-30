@@ -1,0 +1,32 @@
+<div class="mb-3"></div>
+<form (submit)="login()" [formGroup]="authForm">
+  <div class="container">
+    <div class="row col-md-12 justify-content-md-center">
+      <div class="col-md-6">
+        <mat-label class="mat-display-1 text-info">Entrar no iContas</mat-label>
+
+        <mat-form-field [style.fontSize.px]=24 class="col-md-12 mb-3">
+          <mat-label>E-mail</mat-label>
+          <input [(ngModel)]="credentials.email" name="email" type="text" matInput formControlName="email"
+            placeholder="alguem@dominio.com">
+          <button mat-button *ngIf="credentials.email" matSuffix mat-icon-button aria-label="Clear"
+            (click)="credentials.email=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field [style.fontSize.px]=24 class="col-md-12 mb-3">
+          <mat-label>Senha</mat-label>
+          <input [(ngModel)]="credentials.password" name="password" (keydown.enter)="login()" type="password" matInput formControlName="password"
+            placeholder="">
+          <button mat-button *ngIf="credentials.password" matSuffix mat-icon-button aria-label="Clear"
+            (click)="credentials.password=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="password.invalid" style="color: red;">Senha ou usuário incorretos</mat-error>
+        </mat-form-field>
+          <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Entrar</button>
+      </div>
+    </div>
+  </div>
+</form>

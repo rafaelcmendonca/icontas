@@ -1,0 +1,39 @@
+<h1 class="rafa-title">Informe de Gastos para o IRPF
+  <p></p>
+</h1>
+
+<div class="rafa-title-2">
+  <div class="rafa-title-2-cell">
+    Ano Base
+  </div>
+  <mat-select class="rafa-title-2-cell" (selectionChange)="refresh($event.value)" [(ngModel)]="this.anoBase"
+    name="anoBase" placeholder="{{this.anoBase}}">
+    <mat-option [value]=2020>2020</mat-option>
+    <mat-option [value]=2021>2021</mat-option>
+  </mat-select>
+</div>
+
+<mat-select class="rafa-title-2" (selectionChange)="refresh($event.value)" [(ngModel)]="this.categoriaSelecionada"
+  name="categoriaSelecionada" placeholder="Categoria">
+  <mat-option *ngFor="let categoria of categorias" [value]="categoria._id">
+    {{categoria.nome}}
+  </mat-option>
+</mat-select>
+
+<p></p>
+<div class="rafa-total-panel">
+  <div class="rafa-align-right">Total anual: {{this.totalAnual | currency:'BRL':'symbol' }}</div>
+  <div class="rafa-row-3">
+    <div class="rafa-col-3">Total Serviços: {{this.totalServico | currency:'BRL':'symbol' }}</div>
+    <div class="rafa-col-3">Total Material: {{this.totalMaterial | currency:'BRL':'symbol' }}</div>
+    <div class="rafa-col-3">Total Ordinárias: {{this.totalOrdinarias | currency:'BRL':'symbol' }}</div>
+  </div>
+</div>
+
+<div class="rafa-row">
+  <div *ngFor="let monthIndex of this.months">
+    <app-resultado-mensal [mes]=monthIndex [ano]=this.anoBase [categoria]=this.categoriaSelecionada>
+    </app-resultado-mensal>
+    <p></p>
+  </div>
+</div>

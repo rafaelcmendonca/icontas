@@ -1,0 +1,41 @@
+<mat-toolbar class="rafa-navbar">
+  <button mat-icon-button aria-label="Logo">
+    <img src="assets/img/logo.png" width="30" height="30" alt="">
+  </button>
+  <button mat-button aria-label="Home" routerLink="/">
+    <span class="rafa-navbar-item">iContas</span>
+  </button>
+  <div *ngIf="auth.isLoggedIn()">
+    <button mat-button aria-label="Categorias" routerLink="/categoria">
+      <span class="rafa-navbar-item">Categorias</span>
+    </button>
+    <button mat-button aria-label="Empresas" routerLink="/empresa">
+      <span class="rafa-navbar-item">Empresas</span>
+    </button>
+    <button mat-button aria-label="Contas" routerLink="/conta">
+      <span class="rafa-navbar-item">Contas</span>
+    </button>
+    <button mat-button aria-label="Pagamentos" routerLink="/pagamento">
+      <span class="rafa-navbar-item">Pagamentos</span>
+    </button>
+    <button mat-button aria-label="Informe IRPF" routerLink="/tax">
+      <span class="rafa-navbar-item">Informe IRPF</span>
+    </button>
+    <button mat-button aria-label="Fluxo de Caixa" routerLink="/budget">
+      <span class="rafa-navbar-item">Fluxo de Caixa</span>
+    </button>
+  </div>
+  <span class="rafa-navbar-spacer"></span>
+  <button mat-button *ngIf="auth.isLoggedIn()" aria-label="UserName" routerLink="/auth/profile">
+    <span class="rafa-navbar-item-small" style="font-weight: lighter;">{{ userName }}</span>
+  </button>
+  <button mat-stroked-button *ngIf="auth.isLoggedIn()" aria-label="Sair" (click)="auth.logout()">
+    <span class="rafa-navbar-item">Sair</span>
+  </button>
+  <button mat-stroked-button *ngIf="!auth.isLoggedIn()" aria-label="Entrar" routerLink="/auth/login">
+    <span class="rafa-navbar-item">Entrar</span>
+  </button>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>

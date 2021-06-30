@@ -1,0 +1,40 @@
+<div class="container  col-md-12">
+  <h1 class="text-center col-md-12">Gerador Automático de Parcelas</h1>
+  <form [formGroup]="formulario">
+    <div class="form-row mb-3">
+      <mat-form-field [style.fontSize.px]=16 class="col-md-3">
+        <mat-label>Quantidade</mat-label>
+        <input [(ngModel)]="model.quantidade" name="quantidade" type="number" matInput formControlName="quantidade">
+        <mat-error *ngIf="quantidade.invalid" style="color: red;">Inválido</mat-error>
+      </mat-form-field>
+      <div class="col-md-2"></div>
+      <!-- Valor Field -->
+      <mat-form-field [style.fontSize.px]=16 class="col-md-7">
+        <mat-label>Valor</mat-label>
+        <input [(ngModel)]="valorString" name="valor" (change)="transformValor($event)" type="text" matInput
+          formControlName="valor" placeholder="R$ 00,00">
+        <mat-error *ngIf="valor.invalid" style="color: red;">Inválido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-row mb-3">
+      <!-- Data de Vencimento - Datepicker -->
+      <mat-form-field [style.fontSize.px]=16 color="accent" appearance="" class="col-md-12 mb-3">
+        <mat-label>Vencimento da Primeira Parcela</mat-label>
+        <input [(ngModel)]="model.vencimento" name="vencimento" formControlName="vencimento" matInput
+          [matDatepicker]="picker1">
+        <mat-error *ngIf="vencimento.invalid" style="color: red;">Por favor, insira uma data.</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+  </form>
+</div>
+<div class="row justify-content-end">
+  <button class="mat-raised-button mr-2" (click)="fechar()">
+    Fechar
+  </button>
+  <button class="mat-raised-button mat-primary" (click)="executar()">
+    Executar
+  </button>
+</div>

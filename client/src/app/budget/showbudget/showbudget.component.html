@@ -1,0 +1,69 @@
+<h1 class="rafa-title">Fluxo de Caixa
+  <p></p>
+</h1>
+
+<div class="rafa-total-panel">
+  <div class="rafa-align-right">Informações Iniciais </div>
+  <div class="row">
+    <mat-form-field [style.fontSize.px]=16 color="accent" class="col-3" appearance="outline">
+      <mat-label>Salário Líquido</mat-label>
+      <input [(ngModel)]="salarioLiquido" name="salarioLiquido" type="number" matInput placeholder="R$ 0,00"
+        mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ " type="text"
+        [dropSpecialCharacters]="true">
+    </mat-form-field>
+    <mat-form-field [style.fontSize.px]=16 color="accent" class="col-3" appearance="outline">
+      <mat-label>Despesas Fixas Mensais</mat-label>
+      <input [(ngModel)]="despesasMensais" name="despesasMensais" type="number" matInput placeholder="R$ 0,00"
+        mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ " type="text"
+        [dropSpecialCharacters]="true">
+    </mat-form-field>
+    <mat-form-field [style.fontSize.px]=16 color="accent" class="col-3" appearance="outline">
+      <mat-label>Total em Reserva (Investimentos)</mat-label>
+      <input [(ngModel)]="investimento" name="investimento" type="number" matInput placeholder="R$ 0,00"
+        mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ " type="text"
+        [dropSpecialCharacters]="true">
+    </mat-form-field>
+    <mat-form-field [style.fontSize.px]=16 color="accent" class="col-3" appearance="outline">
+      <mat-label>Quantidade de Meses</mat-label>
+      <input [(ngModel)]="meses" name="meses" type="meses" matInput placeholder="12">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <button class="btn btn-info mr-2 col-6" (click)="preparaDados()" style="margin: auto;">Iniciar Análise</button>
+  </div>
+</div>
+
+
+<div class="rafa-row" *ngFor="let bud of this.budgetMonths">
+  <mat-accordion multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+
+          <div class="rafa-expansion-title">
+            {{bud.mes}} - {{bud.ano}}
+          </div>
+
+          <div class="rafa-expansion-receitas">
+            Receita: {{bud.receitas | currency:'BRL':'symbol' }}
+          </div>
+
+          <div class="rafa-expansion-despesas">
+            Despesas: {{bud.despesas | currency:'BRL':'symbol' }}
+          </div>
+
+          <div *ngIf="bud.reserva >= 0" class="rafa-expansion-title-right-positivo">
+            Investimento: {{bud.reserva | currency:'BRL':'symbol' }}
+          </div>
+
+          <div *ngIf="bud.reserva < 0" class="rafa-expansion-title-right-negativo">
+            Investimento: {{bud.reserva | currency:'BRL':'symbol' }}
+          </div>
+
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-budget-mensal [items]="bud.items"></app-budget-mensal>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <p></p>
+</div>

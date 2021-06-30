@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Registrar</h1>
+      <p class="lead">
+        Já possui credenciais? Por favor <a routerLink="/auth/login">entre</a> aqui.
+      </p>
+      <form (submit)="register()">
+        <div class="form-group">
+          <label for="name">Nome Completo</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            placeholder="Entre seu nome completo"
+            [(ngModel)]="credentials.name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            placeholder="alguem@dominio.com"
+            [(ngModel)]="credentials.email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Senha"
+            [(ngModel)]="credentials.password"
+          />
+        </div>
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Registrar</button>
+      </form>
+    </div>
+  </div>
+</div>

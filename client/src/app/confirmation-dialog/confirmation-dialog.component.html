@@ -1,0 +1,12 @@
+<div class="container">
+<h1 md-dialog-title class="mb-3 text-center">Confirmação</h1>
+<div class="mb-3"></div>
+<div *ngIf="mensagem1" md-dialog-content class="row justify-content-md-center mb-3">{{mensagem1}}</div>
+<div *ngIf="mensagem2"  md-dialog-content class="row justify-content-md-center mb-3">{{mensagem2}}</div>
+<div class="mb-3"></div>
+<div class="row justify-content-md-center">
+  <button *ngIf="botaoSim" class="mat-raised-button mat-primary mr-2" (click)="dialogRef.close('sim')">Sim</button>
+  <button *ngIf="botaoNao" class="mat-raised-button mat-secondary mr-2"(click)="dialogRef.close('nao')">Não</button>
+  <button *ngIf="botaoVoltar" class="mat-raised-button mr-2" (click)="dialogRef.close('voltar')">Voltar</button>
+</div>
+</div>

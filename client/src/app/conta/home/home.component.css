@@ -1,0 +1,30 @@
+.table-header-bg {
+  background-color: rgb(77, 63, 45);
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-header-cell {
+  background-color: mediumpurple;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.mat-form-field {
+  font-size: 20px;
+  width: 30%;
+}
+
+.mat-cell, .mat-footer-cell {
+  font-size: 12px;
+}
+
+.mat-column-acoes {
+  width: 84px;
+}

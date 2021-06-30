@@ -1,0 +1,74 @@
+<div class="rafa-row-panel">
+
+  <div class="rafa-panel-title">
+    <mat-select class="rafa-panel-title-2" (selectionChange)="refresh($event.value)" [(ngModel)]="this.categoriaSelecionada"
+      name="categoriaSelecionada" placeholder="Categoria">
+      <mat-option value="todas">Todas as Categorias</mat-option>
+      <mat-option *ngFor="let categoria of categorias" [value]="categoria._id">
+        Categoria: {{categoria.nome}}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <div class="rafa-row">
+
+    <div class="rafa-col-1">
+      <div class="rafa-block">
+        <div class="rafa-block-title">
+          <label>Resultado em {{this.mesString}}</label>
+        </div>
+        <div class="rafa-block-content">
+          <div class="">Pagos no mês: {{this.mesPago | currency: 'BRL': 'symbol'}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="rafa-block-content">
+          <div class="">A pagar: {{this.mesEmHaver | currency: 'BRL': 'symbol'}}</div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+
+    <div class="rafa-col-2">
+      <div class="rafa-block">
+        <div class="rafa-block-title">
+          <label>Futuro</label>
+        </div>
+        <div class="rafa-block-content">
+          <div>A vencer no próximo mês: {{this.proximoEmHaver | currency: 'BRL': 'symbol'}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="rafa-block-content">
+          <div>A vencer nos próximos 3 mês: {{this.quarterEmHaver | currency: 'BRL': 'symbol'}}</div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="rafa-row">
+    <div class="rafa-col-1"></div>
+
+    <div class="rafa-col-2">
+      <div class="rafa-block">
+        <div class="rafa-block-title">
+          <label>Resumo Geral</label>
+        </div>
+        <div class="rafa-block-content">
+          <div>Total geral de contas: {{this.totalContas | currency: 'BRL': 'symbol'}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="rafa-block-content">
+          <div>Total em contas a pagar: {{this.totalEmHaver | currency: 'BRL': 'symbol'}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="rafa-block-content">
+          <div>Total pago: {{this.totalPago | currency: 'BRL': 'symbol'}}</div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+
+  </div>
+</div>

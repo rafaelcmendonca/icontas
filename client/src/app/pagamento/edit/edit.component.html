@@ -1,0 +1,111 @@
+<div class="mb-3"></div>
+<div class="container mat-elevation-z6">
+  <div class="col-md-12 p-1">
+    <div class=row mb-3></div>
+    <div class="row col-md-12 justify-content-between">
+      <div class="col-8 mb-2">
+        <div class="row gx-md-1">
+          <div class="col">
+            <mat-label class="mat-display-2 text-info mr-4">{{this.empresaName}}</mat-label>
+          </div>
+          <div class="col">
+            <mat-label class="mat-headline text-primary">{{this.conta.descricao}}</mat-label>
+          </div>
+        </div>
+      </div>
+      <!-- Status -->
+      <div class="col-2">
+        <div class="mb-3"></div>
+        Pago
+        <mat-slide-toggle [checked]="toggleSwitch" (change)="toggleStatusSwitch()">
+          Em Haver
+        </mat-slide-toggle>
+      </div>
+    </div>
+    <mat-divider class="mb-2"></mat-divider>
+    <div>
+      <form [formGroup]="pagamentoForm">
+        <div class="row" style="margin-bottom: 30px; margin-top: 30px;">
+          <label>Criado em {{model.dataCriacao | date: 'shortDate'}} por {{owner}}.</label>
+        </div>
+
+        <div class="row">
+          <!-- Descricao -->
+          <mat-form-field [style.fontSize.px]=24 class="col-md-6">
+            <mat-label>Descrição</mat-label>
+            <input matInput type="text" [(ngModel)]="model.descricao" formControlName="descricao" name="descricao"
+              placeholder="Ex: Tijolos, cimento e areia...">
+            <button mat-button *ngIf="model.descricao" matSuffix mat-icon-button aria-label="Clear"
+              (click)="model.descricao=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="descricao.invalid" style="color: red;">Esta conta precisa de uma descrição.</mat-error>
+          </mat-form-field>
+          <!-- Spacer -->
+          <div class="col-md-2"></div>
+          <!-- Data de Vencimento - Datepicker -->
+          <mat-form-field [style.fontSize.px]=24 color="accent" appearance="" class="col-md-4 mb-3">
+            <mat-label>Data de Vencimento</mat-label>
+            <input [(ngModel)]="model.dataVencimento" name="dataVencimento" formControlName="dataVencimento" matInput
+              [matDatepicker]="picker1">
+            <mat-error *ngIf="dataVencimento.invalid" style="color: red;">Por favor, insira uma data.</mat-error>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <!-- Data de Pagamento - Datepicker -->
+          <mat-form-field [style.fontSize.px]=24 color="accent" appearance="" class="col-md-4 mb-3">
+            <mat-label>Data do Pagamento</mat-label>
+            <input [(ngModel)]="model.dataPagamento" (dateChange)="pay()" name="dataPagamento"
+              formControlName="dataPagamento" matInput [matDatepicker]="picker2">
+            <mat-error *ngIf="dataPagamento.invalid" style="color: red;">Por favor, insira uma data.</mat-error>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+          <!-- Spacer -->
+          <div class="col-md-4"></div>
+          <!-- Valor -->
+          <mat-form-field [style.fontSize.px]=30 class="col-md-4">
+            <mat-label>Valor da Parcela</mat-label>
+            <input currencyMask matInput [(ngModel)]="model.valor" formControlName="valor" name="valor"
+              placeholder="R$ 0,00" mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ "
+              type="text" [dropSpecialCharacters]="true">
+            <button mat-button *ngIf="this.model.valor" matSuffix mat-icon-button aria-label="Clear"
+              (click)="this.model.valor=null">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="valor.invalid" style="color: red;">O pagamento deve ter um valor</mat-error>
+          </mat-form-field>
+
+        </div>
+      </form>
+      <div class="row gx-1" style="margin-bottom: 20px;">
+        <div class="col-1">
+          <button (click)="submitForm()" class="btn btn-success my-2 my-sm-0 mr-2">Salvar</button>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-danger my-2 my-sm-0 mr-2" (click)="delete(model._id)">Excluir</button>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-secondary mr-2" (click)="voltar()">Voltar</button>
+        </div>
+        <div class="col-6">
+          <span class="rafa-log" *ngIf="!toggleSwitch">Pago em {{model.dataPagamento | date: 'shortDate'}}
+            por
+            {{pagoPorName}}.</span>
+        </div>
+      </div>
+
+      <!-- Anexos -->
+      <div class="form-row mb-3">
+        <app-anexos [type]="'pagamento'" [idParent]="model._id" class="col-md-12"></app-anexos>
+      </div>
+
+      <!-- Spacer -->
+      <div class="row mb-3"></div>
+
+    </div>
+  </div>
+</div>

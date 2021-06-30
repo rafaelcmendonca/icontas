@@ -1,0 +1,26 @@
+<div class="rafa-alerta-row">
+  <div *ngIf="(!this.atrasados) && (!this.aVencer)" class="alerta-verde">
+    <label>Parabéns. Suas contas estão em dia.</label>
+</div>
+  <div *ngIf="this.atrasados === 1" class="alerta-vermelho">
+      <label routerLink="/pagamento">ATENÇÃO: Você tem {{this.atrasados}} pagamento vencido!!</label>
+  </div>
+  <div *ngIf="this.atrasados > 1" class="alerta-vermelho">
+    <label routerLink="/pagamento">ATENÇÃO: Você tem {{this.atrasados}} pagamentos vencidos!!</label>
+</div>
+  <div *ngIf="this.aVencer === 1" class="alerta-amarelo">
+    <label routerLink="/pagamento">Você tem {{this.aVencer}} pagamento a vencer.</label>
+  </div>
+  <div *ngIf="this.aVencer > 1" class="alerta-amarelo">
+    <label routerLink="/pagamento">Você tem {{this.aVencer}} pagamentos a vencer.</label>
+  </div>
+</div>
+<div class="rafa-row">
+  <div class="rafa-col-1">
+    <app-distribuicao-chart></app-distribuicao-chart>
+  </div>
+  <div class="rafa-col-2">
+    <app-progressao-chart></app-progressao-chart>
+  </div>
+</div>
+<app-sumario></app-sumario>

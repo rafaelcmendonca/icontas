@@ -1,0 +1,64 @@
+<div class="mb-3"></div>
+<div class="container mat-elevation-z6">
+  <div class="col-md-12 p-1">
+    <form [formGroup]="formulario">
+      <!-- Row 1 - Spacer -->
+      <div class="form-row mb-3"></div>
+
+      <!-- Row 2 Title & Log-->
+      <div class="form-row col-md-12">
+        <h1 class="mat-display-2 text-info col-auto mr-auto mb-2">Editar Categoria</h1>
+        <mat-label class="col-auto">Criada em {{model.dataCriacao | date: 'shortDate'}} por {{owner}}</mat-label>
+      </div>
+
+      <!-- Row 3 Spacer -->
+      <div class="form-row mb-3"></div>
+
+      <!-- Row 4 - Nome e CPF/CNPJ -->
+      <div class="form-row">
+
+        <!-- Nome Field -->
+        <mat-form-field [style.fontSize.px]=24 class="col-md-12">
+          <input [(ngModel)]="model.nome" name="nome" type="text" matInput formControlName="nome"
+            placeholder="Alterar Nome">
+          <button mat-button *ngIf="model.nome" matSuffix mat-icon-button aria-label="Clear" (click)="model.nome=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="nome.invalid" style="color: red;">Por favor, digite o nome da categoria.</mat-error>
+        </mat-form-field>
+
+        <!-- Column Spacer -->
+        <div class="col-md-2 mb-3"></div>
+
+        <!-- Descriçã Field -->
+        <mat-form-field [style.fontSize.px]=24 class="col-md-12">
+          <mat-label>Descrição</mat-label>
+          <input [(ngModel)]="model.descricao" name="descricao" type="text" matInput formControlName="descricao"
+            placeholder="Ex: Gastos com construção...">
+          <button mat-button *ngIf="model.descricao" matSuffix mat-icon-button aria-label="Clear"
+            (click)="model.descricao=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="descricao.invalid" style="color: red;">Por favor, digite a descricao.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Row 5 - Buttons -->
+      <div class="row gx-1">
+        <div class="col-1">
+          <button (click)="submitForm()" class="btn btn-info"
+            [disabled]="formulario.invalid">Salvar</button>
+        </div>
+        <div class="col-1">
+          <button (click)="delete(model._id)" class="btn btn-danger">Excluir</button>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-secondary" routerLink="/categoria">Voltar</button>
+        </div>
+      </div>
+
+      <!-- Row 6 - Bottom Spacer -->
+      <div class="mb-3"></div>
+    </form>
+  </div>
+</div>

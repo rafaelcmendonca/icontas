@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1 class="form-signin-heading">Seu Perfil</h1>
+
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Nome Completo</label>
+          <p class="form-control-static">{{ details?.name }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Email</label>
+          <p class="form-control-static">{{ details?.email }}</p>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Nova Senha"
+            [(ngModel)]="usuario.password"
+          />
+          <p></p>
+          <button (click)="this.updatePassword()" class="btn btn-outline-success my-2 my-sm-0">Mudar Senha</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

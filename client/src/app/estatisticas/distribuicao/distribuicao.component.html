@@ -1,0 +1,17 @@
+<div class="rosquinha-block mat-elevation-z4">
+
+  <div class="rosquinha-header">
+    <label class="rosquinha-title">Distribuição de contas</label>
+  </div>
+  <div class="rosquinha-chart">
+    <canvas id="rosquinha" ></canvas>
+  </div>
+
+  <div class="rosquinha-footer">
+      <mat-radio-group class="rosquinhas-choices-block"  (change)="this.atualizaChart()" [(ngModel)]="this.rosquinhaChoice" >
+        <mat-radio-button class="rosquinha-choice-left" value="categoria">Por categoria</mat-radio-button>
+        <mat-radio-button class="rosquinha-choice-right" value="empresa">Por empresa</mat-radio-button>
+      </mat-radio-group>
+  </div>
+
+</div>

@@ -1,0 +1,68 @@
+<div class="rafa-row">
+  <div class="rafa-left">
+    <mat-form-field>
+      <mat-label>Filtrar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+  </div>
+  <div class="rafa-right">
+    Total pago: {{this.totalPago | currency:'BRL':'symbol' }}
+    <p>Total a pagar: {{this.totalEmHaver | currency:'BRL':'symbol' }}</p>
+  </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort matSortActive="vencimento" matSortDirection="asc" class="mat-elevation-z4 mb-3">
+
+  <ng-container matColumnDef="payment">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button style="width: 24px; padding-left: 15px; color: dodgerblue; "  (click)="edit(element._id)">
+        <mat-icon>payment</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Vencimento Column -->
+  <ng-container matColumnDef="vencimento">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Data de Vencimento </th>
+    <td mat-cell *matCellDef="let element"> {{element.vencimento | date:'shortDate'}} </td>
+  </ng-container>
+
+  <!-- Valor Column -->
+  <ng-container matColumnDef="valor">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor </th>
+    <td mat-cell *matCellDef="let element"> {{element.valor | currency:'BRL':'symbol' }} </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="element.status == pagamentoService.STANDARD_STATUS.EM_HAVER" class="badge rounded-pill bg-danger">Em
+        Haver</span>
+      <span *ngIf="element.status == pagamentoService.STANDARD_STATUS.PAGO"
+        class="badge rounded-pill bg-success">Pago</span>
+    </td>
+  </ng-container>
+
+  <!-- Descricao Column -->
+  <ng-container matColumnDef="descricao">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Observações </th>
+    <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button style="width: 24px; padding-left: 5px; " (click)="edit(element._id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button style="width: 24px; padding-left: 15px; " color="warn"  (click)="delete(element._id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns table-header-bg"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

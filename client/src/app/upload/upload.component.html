@@ -1,0 +1,21 @@
+<div class="">
+  <mat-card class="anexos-bg">
+    <div class="row p-1 g-1">
+      <div class="col-1">
+        <mat-label class="mat-headline text-info">Anexos</mat-label>
+      </div>
+      <div class="col-1">
+        <button mat-raised-button (click)="openUploadDialog()">Adicionar</button>
+      </div>
+    </div>
+    <div class="row p-1 g-1">
+      <mat-chip-list class="col-auto" aria-label="Anexos">
+        <mat-chip *ngFor="let anexo of anexos" [selectable]="true" [removable]="true" (click)="readFile(anexo.idFile)"
+          (removed)="deleteFile(anexo._id)" color="accent">{{anexo.descricao}}
+          <img id='output'>
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </mat-card>
+</div>

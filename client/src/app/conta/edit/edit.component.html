@@ -1,0 +1,143 @@
+<div class="mb-3"></div>
+<div class="container mat-elevation-z6">
+  <div class="col-md-12 p-1">
+    <div class="row col-md-12">
+      <div class="col-md-2">
+        <h1 class="mat-display-2 text-info" style="margin-bottom: 40px;">Conta</h1>
+      </div>
+      <div class="col-md-2" style="margin-bottom: auto; margin-top: auto;">
+        <h1 *ngIf="model.tipo > 0" class="mat-headline text-info">Conta Periódica</h1>
+      </div>
+      <!-- Status -->
+      <div class="col-md-2 offset-md-6" style="margin-top: auto; margin-bottom: auto;">
+        <div class="row" ></div>
+        Fechada
+        <mat-slide-toggle class="example-margin" [checked]="toggleSwitch" (change)="toggleStatusSwitch()">
+          Aberta
+        </mat-slide-toggle>
+      </div>
+    </div>
+
+    <div>
+      <form [formGroup]="contaForm">
+        <div class="row" style="margin-bottom: 25px;">
+          <div class="col-6">
+            <label>Criado em {{model.dataCriacao | date: 'shortDate'}} por {{owner}}.</label>
+          </div>
+          <div class="col-6 rafa-radio">
+            <mat-radio-group [(ngModel)]="model.objeto" name="objeto" formControlName="objeto" aria-label="Objeto">
+              <mat-radio-button class="rafa-radio-item" value="{{this.contaService.STANDARD_OBJETO.ORDINARIA}}">
+                Ordinária
+              </mat-radio-button>
+              <mat-radio-button class="rafa-radio-item" value="{{this.contaService.STANDARD_OBJETO.SERVICO}}">Serviço ou
+                Mão de Obra</mat-radio-button>
+              <mat-radio-button class="rafa-radio-item" value="{{this.contaService.STANDARD_OBJETO.MATERIAL}}">Material
+                ou
+                Equipamento</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Empresa -->
+          <mat-form-field [style.fontSize.px]=24 class="col-md-6">
+            <mat-label>Empresa</mat-label>
+            <input matInput type="text" [(ngModel)]="this.empresaName" formControlName="empresaname" name="empresaname">
+          </mat-form-field>
+
+          <div class="col-md-1"></div>
+
+          <!-- Categoria Select -->
+          <mat-form-field [style.fontSize.px]=24 class="col-md-5 mb-3">
+            <mat-select [(ngModel)]="model.categoria" name="categoria" formControlName="categoria"
+              placeholder="Categoria">
+              <mat-option (onSelectionChange)="criarCategoria()" [value]="">Adicionar uma categoria...</mat-option>
+              <mat-divider></mat-divider>
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria._id">
+                {{categoria.nome}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="categoria.invalid" style="color: red;">Você precisa escolher uma categoria</mat-error>
+          </mat-form-field>
+
+        </div>
+
+        <!-- Descricao -->
+        <div class="row">
+          <mat-form-field [style.fontSize.px]=24 class="col-md-6">
+            <mat-label>Descrição</mat-label>
+            <input matInput type="text" [(ngModel)]="model.descricao" formControlName="descricao" name="descricao"
+              placeholder="Ex: Tijolos, cimento e areia...">
+            <button mat-button *ngIf="model.descricao" matSuffix mat-icon-button aria-label="Clear"
+              (click)="model.descricao=''">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="descricao.invalid" style="color: red;">Esta conta precisa de uma descrição.</mat-error>
+          </mat-form-field>
+
+          <div class="col-md-2"></div>
+          <!-- Valor -->
+          <mat-form-field [style.fontSize.px]=24 class="col-md-4">
+            <mat-label>Valor Total</mat-label>
+            <input currencyMask matInput [(ngModel)]="model.valor" formControlName="valor" name="valor"
+              placeholder="R$ 0,00" mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ "
+              type="text" [dropSpecialCharacters]="true">
+            <button mat-button *ngIf="this.model.valor" matSuffix mat-icon-button aria-label="Clear"
+              (click)="this.model.valor=null">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="valor.invalid" style="color: red;">Por favor, insira um valor.</mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+      <div class="row">
+        <div class="mat-elevation-z4 alerta-block">
+          <!-- Alerta Field -->
+          <mat-form-field [style.fontSize.px]=23 color="accent" class="alerta-field">
+            <mat-label>Alerta</mat-label>
+            <input [(ngModel)]="model.alerta" name="alerta" type="number" matInput placeholder="Dias antes...">
+            <mat-error *ngIf="!model.alerta" style="color: red;">Inválido</mat-error>
+          </mat-form-field>
+          <span class="dias-antes">Dias antes...</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <label *ngIf="!toggleSwitch">Fechada em {{model.fechadoEm | date: 'shortDate'}} por
+          {{fechadoPorName}}.</label>
+      </div>
+      <div class="row gx-1">
+        <div class="col-1">
+          <button (click)="submitForm()" class="btn btn-success my-2 my-sm-0 mr-2"
+            [disabled]="!formsValid">Salvar</button>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-danger my-2 my-sm-0 mr-2" (click)="delete(model._id)">Excluir</button>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-primary mr-2" (click)="openGeradorDePagamentos()">Gerador de Parcelas</button>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-secondary mr-2" (click)="voltar()">Voltar</button>
+        </div>
+        <div class="mb-3"></div>
+      </div>
+
+      <!-- Anexos -->
+      <div class="form-row mb-3">
+        <app-anexos [type]="'conta'" [idParent]="model._id" class="col-md-12"></app-anexos>
+      </div>
+      <div class="row mb-3"></div>
+
+      <!-- Row8 - Contas Title -->
+      <div class="row justify-content-center">
+        <div class="col-2">
+          <mat-label class="mat-headline text-info">Parcelas</mat-label>
+        </div>
+      </div>
+
+      <!-- Row 9 Pagamentos Module -->
+      <app-list-pagamento-by-conta [idConta]="model._id"></app-list-pagamento-by-conta>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<form [formGroup]="categoriaForm">
+  <div class="mb-3"></div>
+  <div class="container mat-elevation-z6">
+    <div class="col-md-12 p-1">
+      <!-- Row 2 Title -->
+      <div class="form-row col-md-12">
+        <h1 class="mat-display-2 text-info col-auto mr-auto">Nova Categoria</h1>
+      </div>
+
+      <!-- Nome Field -->
+      <div class="form-row">
+        <mat-form-field [style.fontSize.px]=24 class="col-md-12">
+          <mat-label>Nome da Categoria</mat-label>
+          <input [(ngModel)]="model.nome" name="nome" type="text" matInput formControlName="nome"
+            placeholder="Ex: Construção, Carros, Apartamento...">
+          <button mat-button *ngIf="model.nome" matSuffix mat-icon-button aria-label="Clear" (click)="model.nome=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="nome.invalid" style="color: red;">Por favor, digite o nome da categoria.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Column Spacer -->
+      <div class="col-md-2 mb-3"></div>
+
+      <div class="form-row">
+        <!-- Descricao Field -->
+        <mat-form-field [style.fontSize.px]=24 class="col-md-12">
+          <mat-label>Descrição</mat-label>
+          <input [(ngModel)]="model.descricao" name="descricao" type="text" matInput formControlName="descricao"
+            placeholder="Ex: Gastos com construção...">
+          <button mat-button *ngIf="model.descricao" matSuffix mat-icon-button aria-label="Clear"
+            (click)="model.descricao=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="descricao.invalid" style="color: red;">Por favor, uma descri.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Row 4 - Submit Button -->
+      <div class="row p-1 gx-3">
+        <div class="col-2">
+          <button (click)="submitForm()" class="btn btn-info" [disabled]="categoriaForm.invalid">Adicionar
+            Categoria</button>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-secondary" (click)="voltar()">Voltar</button>
+        </div>
+      </div>
+
+      <!-- Row 5 - Bottom Spacer -->
+      <div class="mb-3"></div>
+    </div>
+  </div>
+</form>

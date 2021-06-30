@@ -1,0 +1,55 @@
+<form [formGroup]="empresaForm">
+  <div class="mb-3"></div>
+  <div class="container mat-elevation-z6">
+    <div class="col-md-12 p-1">
+      <!-- Row 1 - Spacer -->
+      <div class="form-row mb-3"></div>
+
+      <!-- Row 2 Title -->
+      <div class="form-row col-md-12">
+        <h1 class="mat-display-2 text-info col-auto mr-auto mb-2">Cadastrar Empresa</h1>
+      </div>
+
+      <!-- Row 3 - Nome e CPF/CNPJ -->
+      <div class="form-row">
+
+        <!-- Nome Field -->
+        <mat-form-field [style.fontSize.px]=24 class="col-md-6 mb-3">
+          <input [(ngModel)]="model.nome" name="nome" type="text" matInput formControlName="nome"
+            placeholder="Nome da Empresa">
+          <button mat-button *ngIf="model.nome" matSuffix mat-icon-button aria-label="Clear" (click)="model.nome=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="nome.invalid" style="color: red;">Por favor, digite o nome da empresa.</mat-error>
+        </mat-form-field>
+
+        <!-- Column Spacer -->
+        <div class="col-md-2 mb-3"></div>
+
+        <!-- CPF/CNPJ Field -->
+        <mat-form-field [style.fontSize.px]=24 class="col-md-4 mb-3">
+          <input [(ngModel)]="model.cpf" name="cpf" type="text" matInput formControlName="cpf"
+            placeholder="CPF ou CNPJ">
+          <button mat-button *ngIf="model.cpf" matSuffix mat-icon-button aria-label="Clear" (click)="model.cpf=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="cpf.invalid" style="color: red;">Por favor, digite o CPF.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Row 4 - Submit Button -->
+      <div class="row gx-1">
+        <div class="col-2">
+          <button (click)="submitForm()" class="btn btn-info"
+            [disabled]="empresaForm.invalid">Adicionar Empresa</button>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-secondary" (click)="voltar()">Voltar</button>
+        </div>
+      </div>
+
+      <!-- Row 5 - Bottom Spacer -->
+      <div class="mb-3"></div>
+    </div>
+  </div>
+</form>

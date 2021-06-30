@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-header-cell {
+  background-color: teal;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mat-form-field {
+  font-size: 20px;
+  width: 30%;
+}
+
+.mat-column-acoes {
+  width: 84px;
+}

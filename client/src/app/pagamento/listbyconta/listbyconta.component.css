@@ -1,0 +1,47 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-header-cell {
+  background-color: teal;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mat-form-field {
+  font-size: 20px;
+  width: 60%;
+}
+
+.rafa-row {
+  display: table;
+  margin: auto;
+  width: 100%;
+}
+
+.rafa-right {
+  display: table-cell;
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: normal;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.rafa-left {
+  display: table-cell;
+  margin-right: auto;
+  text-align: left;
+}
+
+
+.mat-column-acoes {
+  width: 84px;
+}
+
+
+

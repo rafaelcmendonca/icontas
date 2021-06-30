@@ -1,0 +1,62 @@
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="rafa-expansion-title">
+          {{this.getMonthString(this.mes)}} - {{this.ano}}
+        </div>
+        <div class="rafa-expansion-title-right">
+          {{total | currency:'BRL':'symbol' }}
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div>
+      <table mat-table [dataSource]="dataSource" matSort matSortActive="vencimento" matSortDirection="asc" class="">
+
+        <!-- Empresa Column -->
+        <ng-container matColumnDef="empresa">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th>
+          <td mat-cell *matCellDef="let element"> {{element.empresa}} </td>
+        </ng-container>
+
+        <!-- Conta Column -->
+        <ng-container matColumnDef="conta">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Conta </th>
+          <td mat-cell *matCellDef="let element"> {{element.conta}} </td>
+        </ng-container>
+
+        <!-- Pagamento Column -->
+        <ng-container matColumnDef="pagamento">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Data de Pagamento </th>
+          <td mat-cell *matCellDef="let element"> {{element.pagamento | date:'shortDate'}} </td>
+        </ng-container>
+
+        <!-- Valor Column -->
+        <ng-container matColumnDef="valor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor </th>
+          <td mat-cell *matCellDef="let element"> {{element.valor | currency:'BRL':'symbol' }} </td>
+        </ng-container>
+
+        <!-- Descricao Column -->
+        <ng-container matColumnDef="descricao">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Observações </th>
+          <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns table-header-bg"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+      </table>
+    </div>
+
+    <p></p>
+    <div class="rafa-total-panel">
+      <div class="rafa-row-3">
+        <div class="rafa-col-3">Total Serviços: {{this.totalServico | currency:'BRL':'symbol' }}</div>
+        <div class="rafa-col-3">Total Material: {{this.totalMaterial | currency:'BRL':'symbol' }}</div>
+        <div class="rafa-col-3">Total Ordinárias: {{this.totalOrdinarias | currency:'BRL':'symbol' }}</div>
+      </div>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>

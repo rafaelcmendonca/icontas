@@ -1,0 +1,83 @@
+.rafa-row {
+  content: "";
+  display: table;
+  clear: both;
+  width: 100%;
+}
+
+.rafa-col-1 {
+  float: left;
+  width: 50%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 3%;
+
+}
+
+.rafa-col-2 {
+  float: left;
+  width: 50%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 3%;
+  padding-right: 5%;
+
+}
+
+.rafa-block {
+  padding: 20px;
+}
+
+.rafa-single-col {
+  width: 50%;
+  padding: 20px;
+  margin: auto;
+}
+
+.rafa-row-single {
+  align-content: center;
+}
+
+.rafa-block-title {
+  text-align: right;
+  color: peachpuff;
+  text-shadow: 1px 1px 2px black, 0 0 5px rgb(0, 209, 209), 0 0 5px rgb(0, 77, 77);
+  font-size: 28px;
+  padding-bottom: 20px;
+}
+
+.rafa-block-content {
+  text-align: right;
+  color: rgb(22, 222, 236);
+  font-size: 24px;
+  font-weight: lighter;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.rafa-row-panel {
+  content: "";
+  display: table;
+  clear: both;
+  margin: auto;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rafa-panel-title {
+  text-align: center;
+  padding: 20px;
+  width:100%;
+  font-size: 28px;
+  text-shadow: 1px 1px 2px black, 0 0 5px rgb(0, 209, 209), 0 0 5px rgb(0, 77, 77);
+}
+
+.rafa-panel-title-2 {
+  width:40%;
+}
+
+::ng-deep .mat-select-value {
+  color: peachpuff !important;
+  padding: 10px;
+}

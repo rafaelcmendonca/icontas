@@ -1,0 +1,15 @@
+.rafa-navbar {
+  background: rgb(2, 62, 70);
+}
+
+.rafa-navbar-item {
+  font-size: 20px;
+}
+
+.rafa-navbar-item-small {
+  font-size: 16px;
+}
+
+.rafa-navbar-spacer {
+    flex: 1 1 auto;
+}

@@ -1,0 +1,69 @@
+.rafa-row {
+  display: table;
+  clear: both;
+  width: 100%;
+}
+
+.rafa-col-1 {
+  display: table-cell;
+  float: left;
+  width: 50%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 3%;
+}
+
+.rafa-col-2 {
+  display: table-cell;
+  float: left;
+  width: 50%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 3%;
+  padding-right: 5%;
+}
+
+.rafa-alerta-row {
+  font-size: 18px;
+  display: table;
+  clear: both;
+  padding-top: 10px;
+  width: 100%;
+  margin: auto;
+  font-weight: lighter;
+}
+
+
+.alerta-vermelho {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  background-color: rgba(255, 92, 74, 0.63);
+  width: 40%;
+  margin: auto;
+}
+
+.alerta-verde {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  background-color: rgba(114, 250, 114, 0.5);
+  width: 40%;
+  margin: auto;
+}
+
+.alerta-amarelo {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 5px;
+  margin: auto;
+  margin-top: 10px;
+  width: 40%;
+  background-color: rgba(253, 240, 120, 0.61);
+}

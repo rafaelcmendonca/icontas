@@ -1,0 +1,59 @@
+
+
+.rosquinha-block {
+  width: 100%;
+}
+
+.rosquinha-header {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 30px;
+  width: 100%;
+  height: 20%;
+  margin-bottom: 20px;
+}
+
+.rosquinha-title {
+  margin-top: 25px;
+  margin-bottom: auto;
+  color: peachpuff;
+  text-shadow: 1px 1px 2px black, 0 0 5px rgb(0, 209, 209), 0 0 5px rgb(0, 77, 77);
+}
+
+.rosquinha-chart {
+  height: 50%;
+  width: 100%;
+  margin: auto;
+}
+
+.rosquinha-footer {
+  color: rgb(22, 222, 236);
+  width: 60%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: auto;
+}
+
+.rosquinhas-choices-block {
+  margin: auto;
+  display: block;
+  width: 70%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.rosquinha-choice-left {
+  width: 50%;
+  float: left;
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.rosquinha-choice-right {
+  width: 50%;
+  float: right;
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 10px;
+}

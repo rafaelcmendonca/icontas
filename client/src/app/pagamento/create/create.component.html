@@ -1,0 +1,71 @@
+<form [formGroup]="pagamentoForm">
+  <div class="mb-3"></div>
+  <div class="container mat-elevation-z6">
+    <div class="col-md-12 p-1">
+      <!-- Row 1 - Spacer -->
+      <div class=form-row mb-3></div>
+      <!-- Row 2 Title -->
+      <div class="form-row col-md-12 mb-3">
+        <h1 class="mat-display-2 text-info col-auto mr-auto mb-2">Novo Pagamento</h1>
+      </div>
+      <!-- Row 3 - Descricao da Conta -->
+      <div class="form-row mb-3">
+        <mat-label [style.fontSize.px]=24 class="rafa-details">Conta: {{contaDescricao}}</mat-label>
+      </div>
+      <!-- Row 4 - Valor e Data Vencimento -->
+      <div class="row">
+        <!-- Valor Field -->
+        <mat-form-field [style.fontSize.px]=24 class="col-md-4 mb-3">
+          <mat-label>Valor</mat-label>
+          <input currencyMask matInput [(ngModel)]="model.valor" formControlName="valor" name="valor"
+            placeholder="R$ 0,00" mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ "
+            type="text" [dropSpecialCharacters]="true">
+          <button mat-button *ngIf="this.model.valor" matSuffix mat-icon-button aria-label="Clear"
+            (click)="this.model.valor=null">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="valor.invalid" style="color: red;">O pagamento deve ter um valor</mat-error>
+        </mat-form-field>
+
+        <!-- Column Spacer -->
+        <div class="col-md-4 mb-3"></div>
+
+        <!-- Data de Vencimento - Datepicker -->
+        <mat-form-field [style.fontSize.px]=24 color="accent" appearance="" class="col-md-4 mb-3">
+          <mat-label>Data de Vencimento</mat-label>
+          <input [(ngModel)]="model.dataVencimento" name="dataVencimento" formControlName="dataVencimento" matInput
+            [matDatepicker]="picker1">
+          <mat-error *ngIf="dataVencimento.invalid" style="color: red;">Por favor, insira uma data.</mat-error>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <!-- Row 5 - Descricao Field -->
+      <div class="row">
+        <mat-form-field [style.fontSize.px]=24 class="col-md-12 mb-3">
+          <mat-label>Descrição e Observações</mat-label>
+          <input [(ngModel)]="model.descricao" name="descricao" type="text" matInput formControlName="descricao"
+            placeholder="Ex: Entrada, Parcela 1...">
+          <button mat-button *ngIf="model.descricao" matSuffix mat-icon-button aria-label="Clear"
+            (click)="model.descricao=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <!-- Row 5 - Submit Button -->
+      <div class="row gx-1">
+        <div class="col-2">
+          <button (click)="submitForm()" class="btn btn-info my-2 my-sm-0 mr-3"
+            [disabled]="pagamentoForm.invalid">Adicionar Pagamento</button>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-secondary mr-2" (click)="voltar()">Voltar</button>
+        </div>
+      </div>
+
+      <!-- Row 6 - Bottom Spacer -->
+      <div class="mb-3"></div>
+    </div>
+  </div>
+</form>

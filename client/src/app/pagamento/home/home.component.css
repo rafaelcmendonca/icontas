@@ -1,0 +1,66 @@
+.fundo-vermelho {
+  background-color: rgb(107, 32, 32) !important;
+}
+
+.fundo-amarelo {
+  background-color: rgb(128, 120, 41) !important;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 20px;
+  width: 30%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-header-cell {
+  background-color: sienna;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: green !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: rgb(22, 222, 236) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: green !important;;
+}
+
+::ng-deep .mat-form-field-label {
+    color: rgb(22, 222, 236)!important;
+}
+
+.rafa-row {
+  display: flex;
+}
+
+.mat-column-acoes {
+  width: 84px;
+}
+
+.mat-column-vencimento {
+  width: 100px;
+}
+
+.mat-column-pagamento {
+  width: 100px;
+}
+
+.mat-cell, .mat-footer-cell {
+  font-size: 12px;
+
+}

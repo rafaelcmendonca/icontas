@@ -1,0 +1,72 @@
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #611111;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #ad3131;
+}
+
+::ng-deep .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #094d12;
+}
+
+::ng-deep .mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #2eb13f;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: green !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: rgb(22, 222, 236) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: green !important;;
+}
+
+::ng-deep .mat-form-field-label {
+    color: rgb(22, 222, 236)!important;
+}
+
+.alerta-field {
+  margin-left: 30px;
+  margin-top: 15px;
+  margin-bottom: auto;
+  width: 30%;
+}
+
+.alerta-block {
+  margin-left: 3px;
+  width: 42%;
+  height: 100px;
+  background-color: rgba(104, 6, 6, 0.616);
+  margin-bottom: 25px;
+}
+
+.dias-antes {
+  margin-left: 10%;
+  color: rgb(22, 222, 236);
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 23px;
+  margin-right: auto;
+}
+
+.rafa-radio {
+  display: table;
+  margin-bottom: auto;
+  text-align: center;
+}
+
+.rafa-radio-item {
+  display: table-cell;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: auto;
+}

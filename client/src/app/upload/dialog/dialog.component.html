@@ -1,0 +1,36 @@
+<input type="file" #file style="display: none" (change)="onFilesAdded()" />
+<form [formGroup]="anexoForm">
+  <div class="container">
+    <h1 class="form-row mb-3">Adicionar Anexo</h1>
+    <!-- This is the content of the dialog, containing a list of the files to upload -->
+    <div class="form-row">
+      <!-- Descrição Field -->
+      <mat-form-field [style.fontSize.px]=18 class="col-md-12 mb-3">
+        <mat-label>Descrição do Anexo</mat-label>
+        <input [(ngModel)]="model.descricao" name="descricao" type="text" matInput formControlName="descricao"
+          placeholder="Ex: Orçamento, comprovante...">
+        <button mat-button *ngIf="model.descricao" matSuffix mat-icon-button aria-label="Clear"
+          (click)="model.descricao=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="descricao.invalid" style="color: red;">O anexo deve ter uma descrição</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <button [disabled]="uploading || uploadSuccessful" mat-raised-button color="primary" class="add-files-btn mb-3"
+        (click)="addFiles()">
+        Escolher Arquivo...
+      </button>
+      <div class="col">
+        <h4 *ngIf="fileName" class="arquivo-text">Arquivo: {{fileName}}</h4>
+        <mat-progress-bar *ngIf="progress" mode="determinate" [value]="progress | async"></mat-progress-bar>
+      </div>
+    </div>
+    <mat-dialog-actions class="actions">
+    <!-- This are the actions of the dialog, containing the primary and the cancel button-->
+      <button *ngIf="showCancelButton" mat-button mat-dialog-close>Cancelar</button>
+      <button mat-raised-button color="primary" [disabled]="!canBeClosed"
+        (click)="closeDialog()">{{primaryButtonText}}</button>
+    </mat-dialog-actions>
+  </div>
+</form>

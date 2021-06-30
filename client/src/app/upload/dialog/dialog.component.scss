@@ -1,0 +1,22 @@
+.add-files-btn {
+  float: left;
+  margin-right: 10px;
+}
+
+.arquivo-text {
+  vertical-align: middle;
+  display: table-cell;
+  margin-bottom: 10px;
+}
+
+:host {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.actions {
+  justify-content: flex-end;
+}
+

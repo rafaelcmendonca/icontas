@@ -1,0 +1,79 @@
+<div class="mb-3"></div>
+<div class="container mat-elevation-z6">
+  <div class="col-md-12 p-1">
+    <form [formGroup]="formulario">
+      <!-- Row 1 - Spacer -->
+      <div class="form-row mb-3"></div>
+
+      <!-- Row 2 Title & Log-->
+      <div class="form-row col-md-12">
+        <h1 class="mat-display-2 text-info col-auto mr-auto mb-2">{{model.nome}}</h1>
+        <mat-label class="col-auto">Criado em {{model.dataCriacao | date: 'shortDate'}} por {{owner}}</mat-label>
+      </div>
+
+      <!-- Row 3 Spacer -->
+      <div class="form-row mb-3"></div>
+
+      <!-- Row 4 - Nome e CPF/CNPJ -->
+      <div class="form-row">
+
+        <!-- Nome Field -->
+        <mat-form-field [style.fontSize.px]=24 class="col-md-6 mb-3">
+          <input [(ngModel)]="model.nome" name="nome" type="text" matInput formControlName="nome"
+            placeholder="Alterar Nome">
+          <button mat-button *ngIf="model.nome" matSuffix mat-icon-button aria-label="Clear" (click)="model.nome=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="nome.invalid" style="color: red;">Por favor, digite o nome da empresa.</mat-error>
+        </mat-form-field>
+
+        <!-- Column Spacer -->
+        <div class="col-md-2 mb-3"></div>
+
+        <!-- CPF/CNPJ Field -->
+        <mat-form-field [style.fontSize.px]=24 class="col-md-4 mb-3">
+          <input [(ngModel)]="model.cpf" name="cpf" type="text" matInput formControlName="cpf"
+            placeholder="CPF ou CNPJ">
+          <button mat-button *ngIf="model.cpf" matSuffix mat-icon-button aria-label="Clear" (click)="model.cpf=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="cpf.invalid" style="color: red;">Por favor, digite o CPF.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Row 5 - Buttons -->
+      <div class="row gx-1">
+        <div class="col-1">
+          <button (click)="submitForm()" class="btn btn-info"
+            [disabled]="formulario.invalid">Salvar</button>
+        </div>
+        <div class="col-1">
+          <button (click)="delete(model._id)" class="btn btn-danger">Excluir</button>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-warning" (click)="criarConta()">Adicionar uma conta</button>
+        </div>
+        <div class="col-1">
+          <button class="btn btn-secondary" routerLink="/empresa">Voltar</button>
+        </div>
+      </div>
+
+      <!-- Row 6 - Bottom Spacer -->
+      <div class="mb-3"></div>
+      <!-- Anexos -->
+      <div class="form-row mb-3">
+        <app-anexos [type]="'empresa'" [idParent]="model._id" class="col-md-12"></app-anexos>
+      </div>
+    </form>
+
+    <!-- Row8 - Contas Title -->
+    <div class="row justify-content-center p-1">
+      <div class="col-3">
+        <mat-label class="mat-headline text-info">Contas Cadastradas</mat-label>
+      </div>
+    </div>
+
+    <!-- Row 9 - Contas Module -->
+    <app-list-contas-by-empresa [idEmpresa]="model._id"></app-list-contas-by-empresa>
+  </div>
+</div>

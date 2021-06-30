@@ -1,0 +1,87 @@
+.rafa-row {
+  clear: both;
+  width: 70%;
+  margin: auto;
+}
+.rafa-title {
+  clear: both;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.rafa-title-2 {
+  display: table;
+  clear: both;
+  width:30%;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.rafa-title-2-cell {
+  display: table-cell;
+  width:50%;
+}
+
+.rafa-align-right {
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  color: peachpuff;
+  font-size: 28px;
+  font-weight: bolder;
+  text-shadow: 1px 1px 2px black, 0 0 5px rgb(0, 209, 209), 0 0 5px rgb(0, 77, 77);
+}
+
+.rafa-col-1 {
+  display: table-cell;
+  float: left;
+  width: 50%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 3%;
+}
+
+.rafa-col-2 {
+  display: table-cell;
+  float: left;
+  width: 50%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 3%;
+  padding-right: 5%;
+}
+
+.rafa-row-3 {
+  display: table;
+  margin: auto;
+}
+
+.rafa-col-3 {
+  display: table-cell;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: auto;
+  width: 35%;
+  font-size: 16px;
+  font-weight: lighter;
+  color:peachpuff;
+}
+
+.rafa-total-panel {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 50%;
+  padding: 15px;
+  background-color: rgb(18, 104, 119);
+  border-radius: 5px;
+}
